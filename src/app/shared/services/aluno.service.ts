@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Aluno } from 'src/app/shared/models/Aluno';
 import { enviroment } from 'src/enviroment/enviroment';
 
@@ -11,17 +12,23 @@ export class AlunoService {
 
   constructor(private http: HttpClient) {}
 
-  getAll() {
-    const url = `${this.api}/all`;
-    return this.http.get(url);
+  inserir(novoAluno: Aluno): Observable<Aluno> {
+    return this.http.post<Aluno>(this.api, novoAluno);
   }
 
-  getById(id: number) {
-    const url = `${this.api}/${id}`;
-    return this.http.get(url);
+  listar(): Observable<Aluno[]> {
+    return this.http.get<Aluno[]>(this.api);
   }
 
-  create(aluno: Aluno) {
-    return this.http.post(this.api, aluno);
+  deletar(idAluno: number): Observable<object> {
+    return this.http.delete(`${this.api}${idAluno}`);
+  }
+
+  pesquisarPorId(id: number): Observable<Aluno> {
+    return this.http.get<Aluno>(`${this.api}${id}`);
+  }
+
+  atualizar(aluno: Aluno): Observable<Aluno> {
+    return this.http.put<Aluno>(`${this.api}${aluno.id}`, aluno);
   }
 }

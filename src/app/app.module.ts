@@ -8,6 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
+import { AlunoModule } from 'src/app/pages/aluno/aluno.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +22,9 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
+    AlunoModule,
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
