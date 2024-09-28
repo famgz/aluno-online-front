@@ -17,18 +17,18 @@ export class AlunoService {
   }
 
   listar(): Observable<Aluno[]> {
-    return this.http.get<Aluno[]>(this.api);
+    return this.http.get<Aluno[]>(`${this.api}/all`);
   }
 
   deletar(idAluno: number): Observable<object> {
-    return this.http.delete(`${this.api}${idAluno}`);
+    return this.http.delete(`${this.api}/${idAluno}`);
   }
 
   pesquisarPorId(id: number): Observable<Aluno> {
-    return this.http.get<Aluno>(`${this.api}${id}`);
+    return this.http.get<Aluno>(`${this.api}/${id}`);
   }
 
   atualizar(aluno: Aluno): Observable<Aluno> {
-    return this.http.put<Aluno>(`${this.api}${aluno.id}`, aluno);
+    return this.http.put<Aluno>(`${this.api}/${aluno.id}`, aluno);
   }
 }

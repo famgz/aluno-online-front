@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./listagem-aluno.component.scss'],
 })
 export class ListagemAlunoComponent implements AfterViewInit {
-  displayedColumns: string[] = ['id', 'nome', 'cpf', 'funcoes'];
+  displayedColumns: string[] = ['id', 'name', 'cpf', 'funcoes'];
   dataSource = new MatTableDataSource<Aluno>();
 
   constructor(private alunoService: AlunoService) {}
@@ -53,7 +53,7 @@ export class ListagemAlunoComponent implements AfterViewInit {
             Swal.fire({
               icon: 'error',
               title: 'Oops...',
-              text: 'Erro ao deletar aluno!',
+              text: error.error.detalhes,
             });
           },
         });
